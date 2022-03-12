@@ -43,9 +43,31 @@ result4 = tf.multiply(x3, x2)
 print("numpy", result4.numpy())
 
 # numpy array
-arr_x1 = np.array([[10,20],[30,40],[50,60]])
+arr_x1 = np.array([[10, 20], [30, 40], [50, 60]])
 print(arr_x1)
 
 # Convert numpy array into tensor
 x5 = tf.convert_to_tensor(arr_x1)
 print(x5)
+
+# np array and converted tensor are compatible
+# numpy operations can be performed on tensor but not recommended as it will not be part of computation graph
+print(x2)
+print(np.square(x2))
+print(np.sqrt(x2))
+
+# Check if tensor
+print(tf.is_tensor(arr_x1))
+print(tf.is_tensor(x5))
+
+# tensor helper operation
+
+# 1. like create dimensional array
+t0 = tf.zeros([3, 5], tf.int32)
+print(t0)
+t1 = tf.ones([3, 5], tf.int32)
+print(t1)
+
+# 2. Change dimension of tensor when no of elements matches in original and reshape
+t0_reshaped = tf.reshape(t0, (5, 3))
+print(t0_reshaped)
